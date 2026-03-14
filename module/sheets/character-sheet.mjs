@@ -69,7 +69,7 @@ export class characterSheet extends ActorSheet {
     html.find('.heal-injury').click(this._onHealInjury.bind(this));
 
     // Add token buttons
-    html.find('.spend-token').click(this._onSpendToken.bind(this));
+    // html.find('.spend-token').click(this._onSpendToken.bind(this));
     html.find('.gain-token').click(this._onGainToken.bind(this));
 
     // Add settings toggle

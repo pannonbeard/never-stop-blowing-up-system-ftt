@@ -9,18 +9,22 @@
           <label>Health</label>
           <span>{{healthStatus}}</span>
           <div class="resource-row flexrow flex-center">
-            <button type="button" class="heal-injury">Heal</button>
-            <button type="button" class="add-injury">Injury</button>
+            <button type="button" class="heal-injury resource-button">Heal</button>
+            <button type="button" class="add-injury resource-button">Injury</button>
           </div>
         </div>
         <div class="resource tokens">
           <label>Turbo Tokens</label>
           <span>{{system.tokens}}</span>
           <div class="resource-row flexrow flex-center">
-            <button type="button" class="gain-token">Gain</button>
-            <button type="button" class="spend-token">Spend</button>
+            <button type="button" class="gain-token resource-button">Gain</button>
           </div>
         </div>
+      </div>
+      {{!-- Catchphrase --}}
+      <div class="form-group catchphrase">
+        <label>Catchphrase</label>
+        <input type="text" name="system.catchphrase" value="{{system.catchphrase}}"/>
       </div>
     </div>
   </header>
@@ -29,16 +33,10 @@
   <section class="sheet-body">
     <div class="tab character active" data-tab="character">
 
-      {{!-- Catchphrase --}}
-      <div class="form-group catchphrase">
-        <label>Catchphrase</label>
-        <input type="text" name="system.catchphrase" value="{{system.catchphrase}}"/>
-      </div>
-
       {{!-- Skills Grid --}}
       <div class="skills-grid">
         <div class="skills-header flexrow">
-          <h3 style="flex-grow: 20">Skills</h3>
+          <h3 style="flex-grow: 20; color: white">Skills</h3>
           <div class="header-controls config-group">
             {{#if editMode}}
             <button type="button" class="reset-skills" title="Reset All Skills to d4">
@@ -75,7 +73,7 @@
 
       {{!-- Abilities --}}
       <div class="abilities">
-        <h3>Abilities</h3>
+        <h3 style="color: white">Abilities</h3>
         <div class="ability">
           <label>Ability One</label>
           <input type="text" name="system.abilityone.name" value="{{system.abilityone.name}}" placeholder="Name"/>

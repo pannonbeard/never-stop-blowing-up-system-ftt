@@ -1,4 +1,9 @@
 .never-stop-blowing-up {
+  .window-content{
+    background-color: #747474;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.51' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+    background-blend-mode: overlay;
+  }
 
 /* Never Stop Blowing Up! System Styles */
 
@@ -12,8 +17,12 @@
     align-items: center;
     margin-bottom: 1rem;
     padding: 1rem;
-    background: rgba(0, 0, 0, 0.1);
+    background: #2c2c2c;
+    color: white;
     border-radius: 5px;
+
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.51' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+    background-blend-mode: overlay;
   }
 
   .profile-img {
@@ -36,6 +45,8 @@
   .charname input {
     font-size: 1.5rem;
     font-weight: bold;
+    color: white;
+    padding-inline: 0.5rem;
   }
 
   .flexrow {
@@ -77,6 +88,11 @@
     gap: 0.5rem;
   }
 
+  .resource-button{
+    color: white;
+    border-radius: 1rem;
+  }
+
   .sheet-body {
     padding: 1rem;
   }
@@ -105,10 +121,14 @@
   }
 
   .catchphrase{
+    margin-top: 1rem;
     gap: 1rem;
+    display: block;
     label {
-      width: fit-content;
-      flex-grow: unset;
+      width: 100%;
+    }
+    input {
+      color: white;
     }
   }
 
@@ -124,12 +144,28 @@
   .ability {
     margin-bottom: 1rem;
     padding: 0.5rem;
-    background: rgba(0, 0, 0, 0.05);
+    background: #2c2c2c;
     border-radius: 3px;
-  }
+    color: white;
 
-  .ability input[type="text"] {
-    margin-bottom: 0.25rem;
+    label{
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+
+    input[type="text"] {
+      margin-bottom: 0.25rem;
+      color: black;
+      background: white;
+
+      &::placeholder{
+        color: black;
+      }
+    }
+
+    textarea {
+      background: white;
+    }
   }
 
   /* Skills Grid */
@@ -210,7 +246,7 @@
     align-items: center;
     justify-content: center;
     padding: 1rem 0.5rem;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: radial-gradient(#e99a25 0%, #e77838 90%);
     color: white;
     border: 2px solid #5a6fd8;
     border-radius: 8px;
@@ -221,10 +257,13 @@
     font-weight: bold;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
     width: 100%;
+
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+    margin-bottom: 8px;
   }
 
   .skill-button:hover {
-    background: linear-gradient(135deg, #7c8ff0 0%, #8b5cd6 100%);
+    background: radial-gradient(#e69e32 0%, #f88847 90%);
     border-color: #7c8ff0;
     transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
@@ -240,6 +279,9 @@
     margin-bottom: 0.25rem;
     text-transform: uppercase;
     letter-spacing: 0.5px;
+
+    
+    
   }
 
   .skill-die {

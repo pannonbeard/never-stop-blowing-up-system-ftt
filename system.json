@@ -2,7 +2,7 @@
   "id": "never-stop-blowing-up",
   "title": "Never Stop Blowing Up!!",
   "description": "A human-readable description of your system.",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "compatibility": {
     "minimum": 13,
     "verified": 13
