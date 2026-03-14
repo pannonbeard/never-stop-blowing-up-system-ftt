@@ -27,20 +27,7 @@ export class characterSheet extends ActorSheet {
     context.editMode = this.editMode || false;
 
     // Add health status
-    context.healthStatus = this.healthStatus;
-
-    if(this.actor.system.resources.health.value >= 4){
-      context.healthStatus = 'Dead'
-    }
-    else if(this.actor.system.resources.health.value == 3){
-      context.healthStatus = 'Adrenalized'
-    }
-    else if(this.actor.system.resources.health.value == 2){
-      context.healthStatus = 'Severe'
-    }
-    else if(this.actor.system.resources.health.value == 1){
-      context.healthStatus = 'Superficial'
-    }
+    context.healthStatus = this.getHealthStatus();
     
     // Create skills array for template
     context.skills = [
@@ -58,10 +45,24 @@ export class characterSheet extends ActorSheet {
     return context;
   }
 
+  getHealthStatus(){
+    if(this.actor.system.resources.health.value >= 4){
+      return 'Dead'
+    }
+    else if(this.actor.system.resources.health.value == 3){
+      return 'Adrenalized'
+    }
+    else if(this.actor.system.resources.health.value == 2){
+      return 'Severe'
+    }
+    else if(this.actor.system.resources.health.value == 1){
+      return 'Superficial'
+    }
+    return 'Healthy';
+  }
+
   activateListeners(html) {
     super.activateListeners(html);
-
-    console.log("[NSBU] activateListeners called", { actor: this.actor?.name });
 
     // Add injury/heal buttons
     html.find('.add-injury').click(this._onAddInjury.bind(this));
@@ -87,41 +88,12 @@ export class characterSheet extends ActorSheet {
 
   async _onAddInjury(event) {
     event.preventDefault();
-    if(this.actor.system.resources.health.value >= 3){
-      this.healthStatus = 'Dead'
-    }
-    else if(this.actor.system.resources.health.value == 2){
-      this.healthStatus = 'Adrenalized'
-    }
-    else if(this.actor.system.resources.health.value == 1){
-      this.healthStatus = 'Severe'
-    }
-    else if(this.actor.system.resources.health.value == 0){
-      this.healthStatus = 'Superficial'
-    }
-    else{
-      this.healthStatus = 'Healthy'
-    }
-
+  
     await this.actor.addInjury();
-
-    
   }
 
   async _onHealInjury(event) {
     event.preventDefault();
-    if(this.actor.system.resources.health.value == 4){
-      this.healthStatus = 'Adrenalized'
-    }
-    else if(this.actor.system.resources.health.value == 3){
-      this.healthStatus = 'Severe'
-    }
-    else if(this.actor.system.resources.health.value == 2){
-      this.healthStatus = 'Superficial'
-    }
-    else{
-      this.healthStatus = 'Healthy'
-    }
 
     await this.actor.healInjury();
   }
@@ -318,7 +290,7 @@ export class characterSheet extends ActorSheet {
         <p>You rolled ${currentRoll} on a d${dieSize}.</p>
         <p>Spend tokens to increase this roll? (Max needed: ${maxNeeded})</p>
         <p>Available tokens: ${availableTokens}</p>
-        <input type="number" id="token-spend" min="0" max="${maxSpendable}" value="0" style="width: 60px;">
+        <input type="number" id="token-spend" min="0" max="${maxSpendable}" value="1" style="width: 60px;">
       `;
 
       new Dialog({

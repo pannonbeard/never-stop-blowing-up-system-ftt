@@ -1,18 +1,48 @@
 export class SystemActor extends Actor {
   async addInjury(){
-    const { value } = this.system.resources.health;
+    const { value, max } = this.system.resources.health;
+
+    let newHealth = value + 1;
+    if(newHealth > max){
+      newHealth = max;
+    }
+
+    const healthStatus = this.checkHealthStatus(newHealth);
 
     await this.update({
-      "system.resources.health.value": value + 1
+      "system.resources.health.value": newHealth,
+      "healthStatus": healthStatus
     });
   }
 
   async healInjury(){
     const { value } = this.system.resources.health;
 
+    const newHealth = value - 1;
+    const healthStatus = this.checkHealthStatus(newHealth);
+
     await this.update({
-      "system.resources.health.value": value - 1
+      "system.resources.health.value": newHealth,
+      "healthStatus": healthStatus
     });
+  }
+
+  checkHealthStatus(value){
+    if(value >= 4){
+      return 'Dead'
+    }
+    else if(value == 3){
+      return 'Adrenalized'
+    }
+    else if(value == 2){
+      return 'Severe'
+    }
+    else if(value == 1){
+      return 'Superficial'
+    }
+    else{
+      return 'Healthy'
+    }
   }
 
   async increaseSkillDice(skill){
