@@ -4,7 +4,7 @@
   "description": "A human-readable description of your system.",
   "version": "1.0.0",
   "compatibility": {
-    "minimum": 12,
+    "minimum": 13,
     "verified": 13
   },
   "authors": [{
@@ -48,6 +48,6 @@
   "primaryTokenAttribute": "resources.health",
   "secondaryTokenAttribute": "resources.power",
   "url": "https://your/hosted/system/repo/",
-  "manifest": "https://your/hosted/system/repo/system.json",
-  "download": "https://your/packaged/download/archive.zip"
+  "manifest": "https://raw.githubusercontent.com/pannonbeard/never-stop-blowing-up-system-ftt/refs/heads/main/system.jsonn",
+  "download": "https://github.com/pannonbeard/never-stop-blowing-up-system-ftt/archive/refs/heads/main.zip"
 }
