@@ -1,0 +1,53 @@
+{
+  "id": "never-stop-blowing-up",
+  "title": "Never Stop Blowing Up!!",
+  "description": "A human-readable description of your system.",
+  "version": "1.0.0",
+  "compatibility": {
+    "minimum": 12,
+    "verified": 13
+  },
+  "authors": [{
+    "name": "Phil Hendricks",
+    "url": "YOUR WEBSITE ADDRESS HERE",
+    "email": "YOUR EMAIL ADDRESS HERE",
+    "discord": "Pannonbeard"
+  }],
+  "esmodules": ["never-stop-blowing-up.mjs"],
+  "styles": ["styles/never-stop-blowing-up.css"],
+  "packs": [{
+    "name": "monsters",
+    "label": "Creatures",
+    "type": "Actor"
+  },
+  {
+    "name": "items",
+    "label": "My Items",
+    "type": "Item"
+  }],
+  "languages": [{
+    "lang": "en",
+    "name": "English",
+    "path": "lang/en.json"
+  }],
+  "documentTypes": {
+    "Actor": {
+      "hero": { "htmlFields": ["background.biography"] }
+    },
+    "Item": {
+      "weapon": {},
+      "spell": {}
+    }
+  },
+  "socket": false,
+  "initiative": "1d20",
+  "grid": {
+    "distance": 10,
+    "units": "ft"
+  },
+  "primaryTokenAttribute": "resources.health",
+  "secondaryTokenAttribute": "resources.power",
+  "url": "https://your/hosted/system/repo/",
+  "manifest": "https://your/hosted/system/repo/system.json",
+  "download": "https://your/packaged/download/archive.zip"
+}
