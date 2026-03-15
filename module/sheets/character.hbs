@@ -1,31 +1,45 @@
 <form class="{{cssClass}} flexcol" autocomplete="off">
+  {{#unless editMode}}
+    <div class="name-overlay">{{actor.name}}</div>
+  {{/unless}}
+
   {{!-- Sheet Header --}}
   <header class="sheet-header">
     <img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}"/>
     <div class="header-fields">
-      <div class="name-overlay">{{actor.name}}</div>
-      <h1 class="charname"><input name="name" type="text" value="{{actor.name}}" placeholder="Character Name"/></h1>
+      <button type="button" class="settings-toggle {{#if editMode}}active{{/if}}" title="Toggle Edit Mode">
+        <i class="fas fa-cog"></i>
+      </button>
+      {{#if editMode}}
+        <h1 class="charname"><input name="name" type="text" value="{{actor.name}}" placeholder="Character Name"/></h1>        
+      {{/if}}
       <div class="resources">
         <div class="resource health">
-          <label>Health</label>
-          <span class="current-status">{{healthStatus}}</span>
+          <label class="current-status">{{healthStatus}}</label>
           <div class="resource-row flexrow flex-center">
             <button type="button" class="heal-injury resource-button">Heal</button>
-            <button type="button" class="add-injury resource-button">Injury</button>
+            <button type="button" class="add-injury resource-button">Injure</button>
           </div>
         </div>
         <div class="resource tokens">
-          <label>Turbo Tokens</label>
-          <span>{{system.tokens}}</span>
+          <label class="current-status">Turbo Tokens</label>
           <div class="resource-row flexrow flex-center">
-            <button type="button" class="gain-token resource-button">Gain</button>
+            <span class="token-count">{{system.tokens}}</span>
+            <button type="button" class="gain-token resource-button">Add</button>
           </div>
         </div>
       </div>
       {{!-- Catchphrase --}}
       <div class="form-group catchphrase">
-        <label>Catchphrase</label>
-        <input type="text" name="system.catchphrase" value="{{system.catchphrase}}"/>
+        {{#if editMode}}
+          <label>Catchphrase</label>
+          <input type="text" name="system.catchphrase" value="{{system.catchphrase}}"/>
+        {{else}}
+          <p class="catchphrase live"><strong>Catchphrase:</strong><br />
+          {{#if system.catchphrase}}{{system.catchphrase}}{{/if}}
+          {{#unless system.catchphrase}}Open Edit mode to set your catchphrase.{{/unless}}
+          </p>
+        {{/if}}
       </div>
     </div>
   </header>
@@ -44,9 +58,6 @@
               <i class="fas fa-undo"></i>
             </button>
             {{/if}}
-            <button type="button" class="settings-toggle {{#if editMode}}active{{/if}}" title="Toggle Edit Mode">
-              <i class="fas fa-cog"></i>
-            </button>
           </div>
         </div>
         <div class="skills-container grid grid-3col {{#if editMode}}edit-mode{{/if}}">
