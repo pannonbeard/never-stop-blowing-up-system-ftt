@@ -29,7 +29,7 @@ export class SystemActor extends Actor {
 
   checkHealthStatus(value){
     if(value >= 4){
-      return 'Dead'
+      return 'Incapacitated'
     }
     else if(value == 3){
       return 'Adrenalized'
