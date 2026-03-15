@@ -9,8 +9,6 @@
   },
   "authors": [{
     "name": "Phil Hendricks",
-    "url": "YOUR WEBSITE ADDRESS HERE",
-    "email": "YOUR EMAIL ADDRESS HERE",
     "discord": "Pannonbeard"
   }],
   "esmodules": ["never-stop-blowing-up.mjs"],
@@ -33,9 +31,6 @@
   "documentTypes": {
     "Actor": {
       "hero": { "htmlFields": ["background.biography"] }
-    },
-    "Item": {
-      "abilities": {}
     }
   },
   "socket": false,

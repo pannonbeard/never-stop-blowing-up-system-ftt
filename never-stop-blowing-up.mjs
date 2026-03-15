@@ -13,7 +13,6 @@ Hooks.once("init", () => {
     hero: ActionHeroDataModel,
   };
   CONFIG.Item.dataModels = {
-    ability: AbilityDataModel,
   };
 
   // Configure trackable attributes.
