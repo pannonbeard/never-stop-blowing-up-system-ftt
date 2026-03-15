@@ -3,11 +3,12 @@
   <header class="sheet-header">
     <img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}"/>
     <div class="header-fields">
+      <div class="name-overlay">{{actor.name}}</div>
       <h1 class="charname"><input name="name" type="text" value="{{actor.name}}" placeholder="Character Name"/></h1>
       <div class="resources">
         <div class="resource health">
           <label>Health</label>
-          <span>{{healthStatus}}</span>
+          <span class="current-status">{{healthStatus}}</span>
           <div class="resource-row flexrow flex-center">
             <button type="button" class="heal-injury resource-button">Heal</button>
             <button type="button" class="add-injury resource-button">Injury</button>

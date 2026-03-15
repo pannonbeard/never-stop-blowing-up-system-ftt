@@ -27,9 +27,28 @@ Hooks.once("init", () => {
       value: []
     }
   };
-
-
   
+  foundry.applications.settings.menus.FontConfig.loadFont("OneDay", {
+    editor: true,
+    fonts: [
+      {
+        name: "OneDay",
+        urls: ["systems/never-stop-blowing-up/assets/fonts/one_day.ttf"],
+        sizeAdjust: "110%",
+      },
+    ],
+  });
+
+  foundry.applications.settings.menus.FontConfig.loadFont("FutureGlitch", {
+    editor: true,
+    fonts: [
+      {
+        name: "FutureGlitch",
+        urls: ["systems/never-stop-blowing-up/assets/fonts/future_glitch.ttf"],
+        sizeAdjust: "110%",
+      },
+    ],
+  });
 });
 
 Hooks.once("ready", () => { 

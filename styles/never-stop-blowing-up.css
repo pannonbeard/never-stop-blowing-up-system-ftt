@@ -5,11 +5,15 @@
     background-blend-mode: overlay;
   }
 
+  .window-title{
+    visibility: hidden;
+  }
+
 /* Never Stop Blowing Up! System Styles */
 
   &.sheet.actor {
     min-width: 600px;
-    min-height: 600px;
+    min-height: 725px;
   }
 
   .sheet-header {
@@ -37,6 +41,11 @@
     flex: 1;
   }
 
+  .current-status{
+    font-family: FutureGlitch, sans-serif;
+    font-size: 1.5rem;
+  }
+
   .charname {
     margin: 0 0 0.5rem 0;
     font-size: 1.5rem;
@@ -44,9 +53,20 @@
 
   .charname input {
     font-size: 1.5rem;
-    font-weight: bold;
     color: white;
     padding-inline: 0.5rem;
+  }
+
+  .name-overlay{
+    position: absolute;
+    top: -4rem;
+    left: -3rem;
+    rotate: -15deg;
+    color: #df2be6;
+    text-shadow: 3px 3px 0 white;
+    font-size: 4.5rem;
+    font-family: OneDay, sans-serif;
+    pointer-events: none;
   }
 
   .flexrow {
