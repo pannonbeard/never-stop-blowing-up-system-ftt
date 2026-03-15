@@ -47,7 +47,7 @@ export class characterSheet extends ActorSheet {
 
   getHealthStatus(){
     if(this.actor.system.resources.health.value >= 4){
-      return 'Dead'
+      return 'Incapacitated'
     }
     else if(this.actor.system.resources.health.value == 3){
       return 'Adrenalized'
