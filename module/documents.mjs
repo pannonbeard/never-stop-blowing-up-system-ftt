@@ -122,6 +122,27 @@ export class SystemActor extends Actor {
       "system.tokens": tokens + 1
     });
   }
+
+  async removeAbility(event) {
+    let target = event.target
+    const index = Number(target.closest("[data-index]").dataset.index);
+    const abilities = foundry.utils.deepClone(this.system.abilities ?? []);
+    abilities.splice(index, 1);
+
+    await this.update({
+      "system.abilities": abilities
+    });
+  }
+
+  async addAbility() {
+    console.log('adding ability')
+    const abilities = foundry.utils.deepClone(this.system.abilities ?? []);
+    abilities.push({ name: "", description: "" });
+
+    await this.update({
+      "system.abilities": abilities
+    });
+  }
 }
 
 export class SystemItem extends Item {

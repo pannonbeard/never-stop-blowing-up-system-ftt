@@ -84,6 +84,21 @@ export class characterSheet extends ActorSheet {
 
     // Add skill roll buttons (delegated for dynamic elements)
     html.on('click', '.roll-skill', this._onRollSkill.bind(this));
+
+    html.on('click', '.add-ability', this._onAddAbility.bind(this));
+    html.on('click', '.remove-ability', this._onRemoveAbility.bind(this));
+  }
+
+  async _onAddAbility(event) {
+    event.preventDefault();
+    
+    await this.actor.addAbility();
+  }
+
+  async _onRemoveAbility(event) {
+    event.preventDefault();
+  
+    await this.actor.removeAbility(event);
   }
 
   async _onAddInjury(event) {

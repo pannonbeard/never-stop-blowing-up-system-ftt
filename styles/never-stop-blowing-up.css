@@ -89,12 +89,14 @@
   }
 
   .name-overlay{
+    --text-color: #df2be6;
+    --text-shadow: white;
     position: absolute;
     top: -5rem;
     left: -3rem;
     rotate: -10deg;
-    color: #df2be6;
-    text-shadow: 3px 3px 0 white;
+    color: var(--text-color);
+    text-shadow: 3px 3px 0 var(--text-shadow);
     font-size: 4.5rem;
     font-family: OneDay, sans-serif;
     pointer-events: none;
@@ -218,6 +220,25 @@
     border-radius: 3px;
     color: white;
 
+    .ability-title{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 0.5rem;
+
+      span{
+        display: block;
+      }
+
+      .ability-btn{
+        color: white;
+        border-radius: 0.5rem;
+        padding: 0.25rem 0.75rem;
+        width: fit-content;
+        margin-left: auto;
+      }
+    }
+
     label{
       display: block;
       margin-bottom: 0.5rem;
@@ -236,6 +257,11 @@
     textarea {
       background: white;
     }
+  }
+
+  
+
+  .skills {
   }
 
   /* Skills Grid */

@@ -1,5 +1,5 @@
 import { SystemActor, SystemItem } from "./module/documents.mjs";
-import { ActionHeroDataModel, WeaponDataModel } from "./module/data-models.mjs";
+import { ActionHeroDataModel, AbilityDataModel } from "./module/data-models.mjs";
 import { characterSheet } from "./module/sheets/character-sheet.mjs";
 
 
@@ -13,7 +13,7 @@ Hooks.once("init", () => {
     hero: ActionHeroDataModel,
   };
   CONFIG.Item.dataModels = {
-    weapon: WeaponDataModel,
+    ability: AbilityDataModel,
   };
 
   // Configure trackable attributes.

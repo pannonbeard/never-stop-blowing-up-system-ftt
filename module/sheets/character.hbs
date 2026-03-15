@@ -1,6 +1,6 @@
 <form class="{{cssClass}} flexcol" autocomplete="off">
   {{#unless editMode}}
-    <div class="name-overlay hidden-small-screen">{{actor.name}}</div>
+    <div class="name-overlay hidden-small-screen" style="--text-color: {{system.nameprimarycolor}}; --text-shadow: {{system.nameshadowcolor}};">{{actor.name}}</div>
   {{/unless}}
 
   {{!-- Sheet Header --}}
@@ -13,8 +13,21 @@
       {{#if editMode}}
         <h1 class="charname"><input name="name" type="text" value="{{actor.name}}" placeholder="Character Name"/></h1>        
       {{else}}
-        <div class="name-overlay hidden-big-screen">{{actor.name}}</div>
+        <div class="name-overlay hidden-big-screen" style="--text-color: {{system.nameprimarycolor}}; --text-shadow: {{system.nameshadowcolor}};">{{actor.name}}</div>
       {{/if}}
+      {{#if editMode}}
+      <div class="resources"> 
+        <div>
+          <label>Name Color</label>
+          <input type='color' name="system.nameprimarycolor" value="{{system.nameprimarycolor}}"/>
+        </div>
+
+        <div>
+          <label>Name Shadow</label>
+          <input type='color'  name="system.nameshadowcolor" value="{{system.nameshadowcolor}}"/>
+        </div>
+      </div>
+      {{else}}
       <div class="resources">
         <div class="resource health">
           <label class="current-status">{{healthStatus}}</label>
@@ -31,6 +44,7 @@
           </div>
         </div>
       </div>
+      {{/if}}
       {{!-- Catchphrase --}}
       <div class="form-group catchphrase">
         {{#if editMode}}
@@ -88,23 +102,18 @@
       {{!-- Abilities --}}
       <div class="abilities">
         <h3 style="color: white">Abilities</h3>
-        <div class="ability">
-          <label>Ability One</label>
-          <input type="text" name="system.abilityone.name" value="{{system.abilityone.name}}" placeholder="Name"/>
-          <textarea name="system.abilityone.description">{{system.abilityone.description}}</textarea>
-        </div>
-        <div class="ability">
-          <label>Ability Two</label>
-          <input type="text" name="system.abilitytwo.name" value="{{system.abilitytwo.name}}" placeholder="Name"/>
-          <textarea name="system.abilitytwo.description">{{system.abilitytwo.description}}</textarea>
-        </div>
-        <div class="ability">
-          <label>Ability Three</label>
-          <input type="text" name="system.abilitythree.name" value="{{system.abilitythree.name}}" placeholder="Name"/>
-          <textarea name="system.abilitythree.description">{{system.abilitythree.description}}</textarea>
-        </div>
+        <button type="button" class="add-ability ability-btn">+ Add Ability</button>
+        {{#each system.abilities as |ability i|}}
+          <div class="ability" data-index="{{i}}">
+            <div class="ability-title">
+              <span>Ability</span>
+              <button type="button" class="remove-ability ability-btn">Remove</button>
+            </div>
+            <input type="text" name="system.abilities.{{i}}.name" value="{{ability.name}}" placeholder="Name"/>
+            <textarea name="system.abilities.{{i}}.description">{{ability.description}}</textarea>
+          </div>
+        {{/each}}
       </div>
-
     </div>
   </section>
 </form>
