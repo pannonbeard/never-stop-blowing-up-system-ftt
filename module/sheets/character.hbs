@@ -102,15 +102,25 @@
       {{!-- Abilities --}}
       <div class="abilities">
         <h3 style="color: white">Abilities</h3>
-        <button type="button" class="add-ability ability-btn">+ Add Ability</button>
+        {{#if editMode}}
+          <button type="button" class="add-ability ability-btn">+ Add Ability</button>
+        {{/if}}
         {{#each system.abilities as |ability i|}}
           <div class="ability" data-index="{{i}}">
-            <div class="ability-title">
-              <span>Ability</span>
-              <button type="button" class="remove-ability ability-btn">Remove</button>
-            </div>
-            <input type="text" name="system.abilities.{{i}}.name" value="{{ability.name}}" placeholder="Name"/>
-            <textarea name="system.abilities.{{i}}.description">{{ability.description}}</textarea>
+              {{#if ../editMode}}
+                <div class="ability-title">
+                  <span>Ability</span>
+                    <button type="button" class="remove-ability ability-btn">Remove</button>
+                </div>
+              {{/if}}
+            {{#if ../editMode}}
+              <input type="text" name="system.abilities.{{i}}.name" value="{{ability.name}}" placeholder="Name"/>
+              <textarea name="system.abilities.{{i}}.description">{{ability.description}}</textarea>
+            {{else}}
+              <div class="ability-name">{{ability.name}}</div>
+              <div class="ability-description">{{ability.description}}</div>
+            {{/if}}
+
           </div>
         {{/each}}
       </div>
