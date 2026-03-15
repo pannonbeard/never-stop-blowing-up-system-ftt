@@ -72,6 +72,10 @@
     }
   }
 
+  .glitch-text{
+    font-family: FutureGlitch, sans-serif;
+  }
+
   .current-status{
     font-family: FutureGlitch, sans-serif;
     font-size: 1.25rem;
