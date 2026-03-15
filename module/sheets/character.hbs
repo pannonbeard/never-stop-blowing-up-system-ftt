@@ -1,6 +1,6 @@
 <form class="{{cssClass}} flexcol" autocomplete="off">
   {{#unless editMode}}
-    <div class="name-overlay">{{actor.name}}</div>
+    <div class="name-overlay hidden-small-screen">{{actor.name}}</div>
   {{/unless}}
 
   {{!-- Sheet Header --}}
@@ -12,6 +12,8 @@
       </button>
       {{#if editMode}}
         <h1 class="charname"><input name="name" type="text" value="{{actor.name}}" placeholder="Character Name"/></h1>        
+      {{else}}
+        <div class="name-overlay hidden-big-screen">{{actor.name}}</div>
       {{/if}}
       <div class="resources">
         <div class="resource health">

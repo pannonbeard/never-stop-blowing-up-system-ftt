@@ -15,14 +15,26 @@
 
   &.sheet.actor {
     min-width: 600px;
-    min-height: 725px;
+    min-height: 700px;
+  }
+
+  .hidden-big-screen{
+    @media (min-width: 600px){
+      display: none;
+    }
+  }
+
+  .hidden-small-screen{
+    display: none;
+    @media screen and (min-width: 800px){
+      display: block;
+    }
   }
 
   .sheet-header {
     position: relative;
     display: flex;
     align-items: center;
-    margin-bottom: 1rem;
     padding: 1rem;
     background: #2c2c2c;
     color: white;
@@ -30,6 +42,7 @@
 
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.51' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
     background-blend-mode: overlay;
+    filter: drop-shadow(0px 5px 5px rgba(0, 0, 0, 0.5));
   }
 
   .profile-img {
@@ -45,6 +58,18 @@
 
   .header-fields {
     flex: 1;
+
+    .name-overlay{
+      position: relative;
+      top: unset;
+      left: unset;
+      rotate: unset;
+      font-size: 2rem;
+      margin: 0;
+      line-height: 1;
+      margin-top: -0.5rem;
+      margin-bottom: 1.5rem;
+    }
   }
 
   .current-status{
@@ -264,6 +289,8 @@
   .header-controls {
     display: flex;
     gap: 0.5rem;
+
+    
   }
 
   .reset-skills {
