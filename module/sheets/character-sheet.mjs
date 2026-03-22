@@ -193,17 +193,17 @@ export class characterSheet extends ActorSheet {
 
       // Roll the current die (show with Dice So Nice if available)
       const rollFormula = `1d${currentDie}`;
-      let rollObj = new Roll(rollFormula, {});
+      let rollObj = new Roll(rollFormula);
       rollObj = await rollObj.evaluate();
       rollObjects.push(rollObj);
-      if (game.dice3d) await game.dice3d.show(rollObj, game.user, true);
+      if (game.dice3d) await game.dice3d.showForRoll(rollObj);
 
       let roll = rollObj.total;
       const originalRoll = roll;
       let tokensUsedThisRoll = 0;
       
       // Allow token spending to increase this roll
-      let tokenSpendResult = await this._promptTokenSpend(currentDie, roll, this.actor.system.tokens - tokensSpent);
+      let tokenSpendResult = await this._promptTokenSpend(currentDie, roll, this.actor.system.tokens - tokensSpent, rolls);
       if (tokenSpendResult.spent > 0) {
         roll += tokenSpendResult.spent;
         tokensUsedThisRoll = tokenSpendResult.spent;
@@ -277,15 +277,14 @@ export class characterSheet extends ActorSheet {
       user: game.user.id,
       speaker: ChatMessage.getSpeaker({ actor: this.actor }),
       content: wrappedMessage,
-      type: CONST.CHAT_MESSAGE_TYPES.ROLL,
-      rolls: rollObjects
+      type: CONST.CHAT_MESSAGE_TYPES.OTHER,
     });
 
     // Refresh the sheet so die values stay in sync
     this.render();
   }
 
-  async _promptTokenSpend(dieSize, currentRoll, availableTokens) {
+  async _promptTokenSpend(dieSize, currentRoll, availableTokens, previousRolls) {
     return new Promise((resolve) => {
       if (availableTokens <= 0) {
         resolve({ spent: 0 });
@@ -302,7 +301,9 @@ export class characterSheet extends ActorSheet {
 
       // Create a simple dialog for token spending
       const content = `
-        <p>You rolled ${currentRoll} on a d${dieSize}.</p>
+        <p>Previously Rolled: ${previousRolls.map(r => `${r.finalResult} (d${r.die})`).join(' + ')}</p>
+        <p>Your current roll is ${currentRoll} on a d${dieSize}.</p>
+        <p>Your current Total: ${previousRolls.reduce((acc, r) => acc + r.finalResult, 0)}</p>
         <p>Spend tokens to increase this roll? (Max needed: ${maxNeeded})</p>
         <p>Available tokens: ${availableTokens}</p>
         <input type="number" id="token-spend" min="0" max="${maxSpendable}" value="1" style="width: 60px;">
